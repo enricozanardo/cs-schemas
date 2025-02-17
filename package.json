@@ -1,0 +1,37 @@
+{
+  "name": "@stellab/cs-schemas",
+  "version": "0.1.7",
+  "license": "AGPL-3.0",
+  "description": "Types and schemas for the CS ecosystem",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enricozanardo/cs-schemas.git"
+  },
+  "contributors": [
+    "lemii <info@lemii.dev>"
+  ],
+  "engines": {
+    "node": ">=18.12.0",
+    "npm": ">=8.1.0"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "rimraf ./dist && tsc",
+    "build:watch": "rimraf ./dist && tsc --watch",
+    "publish": "npm run build && npm publish",
+    "lint": "tsc"
+  },
+  "dependencies": {
+    "zod": "^3.24.1",
+    "zod-form-data": "^2.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.7.3"
+  }
+}
