@@ -112,6 +112,8 @@ import {
   SetReadStatusActionResponseSchema,
   CommandSchema,
   ActionSchema,
+  DeleteAccountCoreCommandParamsSchema,
+  DeleteAccountCoreCommandParams,
 } from "./core";
 
 export const commandRequestSchemas: { [key in Command]: ZodSchema } = {
@@ -119,6 +121,7 @@ export const commandRequestSchemas: { [key in Command]: ZodSchema } = {
   [Command.CreateCollection]: CreateCollectionCoreCommandParamsSchema,
   [Command.CreateFile]: CreateFileCoreCommandParamsSchema,
   [Command.CreateNetwork]: CreateNetworkCoreCommandParamsSchema,
+  [Command.DeleteAccount]: DeleteAccountCoreCommandParamsSchema,
   [Command.ExtendExpiration]: ExtendExpirationCoreCommandParamsSchema,
   [Command.InitializeAccount]: InitializeAccountCoreCommandParamsSchema,
   [Command.RequestCollectionAccess]: RequestCollectionAccessCoreCommandParamsSchema,
@@ -142,6 +145,7 @@ export type CommandParams =
   | { command: Command.CreateCollection; params: CreateCollectionCoreCommandParams }
   | { command: Command.CreateFile; params: CreateFileCoreCommandParams }
   | { command: Command.CreateNetwork; params: CreateNetworkCoreCommandParams }
+  | { command: Command.DeleteAccount; params: DeleteAccountCoreCommandParams }
   | { command: Command.ExtendExpiration; params: ExtendExpirationCoreCommandParams }
   | { command: Command.InitializeAccount; params: InitializeAccountCoreCommandParams }
   | { command: Command.RequestCollectionAccess; params: RequestCollectionAccessCoreCommandParams }

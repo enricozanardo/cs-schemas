@@ -54,6 +54,10 @@ export const CreateNetworkCoreCommandParamsSchema = NetworkSchema.omit({
   timestamp: TimestampSchema,
 });
 
+export const DeleteAccountCoreCommandParamsSchema = z.object({
+  timestamp: TimestampSchema,
+});
+
 export const ExtendExpirationCoreCommandParamsSchema = z.object({
   fileIds: z.array(z.string()),
   amount: z.number(),

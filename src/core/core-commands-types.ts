@@ -5,6 +5,7 @@ import {
   CreateCollectionCoreCommandParamsSchema,
   CreateFileCoreCommandParamsSchema,
   CreateNetworkCoreCommandParamsSchema,
+  DeleteAccountCoreCommandParamsSchema,
   ExtendExpirationCoreCommandParamsSchema,
   InitializeAccountCoreCommandParamsSchema,
   RequestCollectionAccessCoreCommandParamsSchema,
@@ -29,6 +30,7 @@ export enum Command {
   CreateCollection = "createCollection",
   CreateFile = "createFile",
   CreateNetwork = "createNetwork",
+  DeleteAccount = "deleteAccount",
   ExtendExpiration = "extendExpiration",
   InitializeAccount = "initializeAccount",
   RequestCollectionAccess = "requestCollectionAccess",
@@ -56,6 +58,8 @@ export type CreateCollectionCoreCommandParams = z.infer<
 export type CreateFileCoreCommandParams = z.infer<typeof CreateFileCoreCommandParamsSchema>;
 
 export type CreateNetworkCoreCommandParams = z.infer<typeof CreateNetworkCoreCommandParamsSchema>;
+
+export type DeleteAccountCoreCommandParams = z.infer<typeof DeleteAccountCoreCommandParamsSchema>;
 
 export type ExtendExpirationCoreCommandParams = z.infer<
   typeof ExtendExpirationCoreCommandParamsSchema
