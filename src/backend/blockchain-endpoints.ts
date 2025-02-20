@@ -18,7 +18,9 @@ export const ExtendExpirationParamsSchema = z.object({
 export const ExtendExpirationResponseSchema = ExtendExpirationCoreCommandParamsSchema;
 
 export const InitializeAccountParamsSchema = z.object({
-  username: z.string(),
+  username: z.string().refine(data => data.toLocaleLowerCase() !== "deleted", {
+    message: "Username cannot be 'deleted'",
+  }),
   email: EmailSchema,
   type: AccountTypeSchema,
   companyDetails: CompanyDetailsSchema,
