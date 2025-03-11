@@ -1,7 +1,13 @@
 import z from "zod";
-import { BigIntSchema, FormDataBooleanSchema, PassphraseSchema } from "../shared/generic";
-import { BufferSchema, CustomFieldSchema, DownloadPermissionLevelSchema } from "../core";
 import { zfd } from "zod-form-data";
+
+import {
+  BigIntSchema,
+  FormDataBooleanSchema,
+  PassphraseSchema,
+  SanitizedString,
+} from "../shared/generic";
+import { BufferSchema, CustomFieldSchema, DownloadPermissionLevelSchema } from "../core";
 
 export const DownloadFileParamsSchema = z.object({
   fileId: z.string(),
@@ -32,7 +38,7 @@ export const UploadFileParamsSchema = z.object({
   passphrase: z.string(),
   expiration: z.coerce.number(),
   network: z.string(),
-  title: z.string(),
+  title: SanitizedString.min(3),
   customFields: CustomFieldSchema.array(),
   recipientEmailHash: z.string(),
   downloadPermissionLevel: DownloadPermissionLevelSchema,

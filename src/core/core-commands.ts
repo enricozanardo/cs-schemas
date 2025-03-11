@@ -13,7 +13,7 @@ import {
   TimestampSchema,
 } from "./core-generic";
 import { Command } from "./core-commands-types";
-import { BigIntSchema } from "../shared/generic";
+import { BigIntSchema, SanitizedString } from "../shared/generic";
 
 export const CommandSchema = z.nativeEnum(Command);
 
@@ -25,7 +25,7 @@ export const CancelRequestCoreCommandParamsSchema = z.object({
 });
 
 export const CreateCollectionCoreCommandParamsSchema = z.object({
-  title: z.string(),
+  title: SanitizedString.min(3),
   transferFee: FeeSchema,
   accessPermissionFee: FeeSchema,
   timestamp: TimestampSchema,
@@ -66,7 +66,7 @@ export const ExtendExpirationCoreCommandParamsSchema = z.object({
 
 export const InitializeAccountCoreCommandParamsSchema = z.object({
   email: EmailSchema,
-  username: z.string(),
+  username: SanitizedString.min(3),
   timestamp: TimestampSchema,
   type: AccountTypeSchema,
   personalDetails: PersonalDetailsSchema,

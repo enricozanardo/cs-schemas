@@ -13,3 +13,5 @@ export const FormDataBooleanSchema = z.preprocess(
 );
 
 export const BigIntSchema = z.coerce.bigint();
+
+export const SanitizedString = z.string().trim().max(64);

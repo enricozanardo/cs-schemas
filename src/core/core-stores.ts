@@ -6,7 +6,7 @@ import {
   CompanyDetailsSchema,
   PersonalDetailsSchema,
 } from "./core-generic";
-import { BigIntSchema } from "../shared/generic";
+import { BigIntSchema, SanitizedString } from "../shared/generic";
 
 const AccountFileRequestSchema = z.object({ fileId: z.string(), requestId: z.string() });
 
@@ -25,7 +25,7 @@ export const AccountStoreDataSchema = z.object({
   incomingCollectionRequests: z.array(AccountCollectionRequestSchema),
   outgoingCollectionRequests: z.array(AccountCollectionRequestSchema),
   emailHash: z.string(),
-  username: z.string(),
+  username: SanitizedString.min(3),
   type: AccountTypeSchema,
   personalDetails: PersonalDetailsSchema,
   companyDetails: CompanyDetailsSchema,
@@ -38,7 +38,7 @@ export const AccountPropsSchema = z
 export const MapStoreDataSchema = z.object({
   address: BufferSchema,
   lsk32address: z.string(),
-  username: z.string(),
+  username: SanitizedString.min(3),
   emailHash: z.string(),
 });
 

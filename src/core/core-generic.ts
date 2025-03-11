@@ -6,7 +6,7 @@ import {
   FileRequestType,
   HistoryItemType,
 } from "./core-generic-types";
-import { BigIntSchema } from "../shared/generic";
+import { BigIntSchema, SanitizedString } from "../shared/generic";
 
 export const CollectionRequestTypeSchema = z.nativeEnum(CollectionRequestType);
 
@@ -52,7 +52,7 @@ export const FileRequestSchema = z.object({
 
 export const FileExpirationSummarySchema = z.object({
   id: z.string(),
-  title: z.string(),
+  title: SanitizedString.min(3),
   expiration: DateTimeMetadataSchema,
   sender: BufferSchema,
   recipientEmailHash: z.string(),
@@ -66,7 +66,7 @@ export const HistoryItemSchema = z.object({
 });
 
 export const FileDataSchema = z.object({
-  title: z.string(),
+  title: SanitizedString.min(3),
   id: z.string(),
   name: z.string(),
   size: z.number(),
@@ -98,7 +98,7 @@ export const CollectionRequestSchema = z.object({
 
 export const CollectionSchema = z.object({
   id: z.string(),
-  title: z.string(),
+  title: SanitizedString.min(3),
   owner: BufferSchema,
   fileIds: z.array(z.string()),
   transferFee: FeeSchema,
@@ -114,14 +114,14 @@ export const AccountTypeSchema = z.union([
 ]);
 
 export const PersonalDetailsSchema = z.object({
-  name: z.string(),
-  surname: z.string(),
-  fiscalCode: z.string(),
+  name: SanitizedString,
+  surname: SanitizedString,
+  fiscalCode: SanitizedString,
 });
 
 export const CompanyDetailsSchema = z.object({
-  name: z.string(),
-  vat: z.string(),
+  name: SanitizedString,
+  vat: SanitizedString,
 });
 
 export const StorageStatisticsSchema = z.object({
@@ -137,7 +137,7 @@ export const CustomFieldSchema = z.object({
 
 export const NetworkSchema = z.object({
   id: z.string(),
-  label: z.string(),
+  label: SanitizedString.min(3),
   owner: z.string(),
   isPublic: z.boolean(),
   accountsAllowed: z.array(z.string()),

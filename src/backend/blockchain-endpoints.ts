@@ -7,7 +7,7 @@ import {
   ExtendExpirationCoreCommandParamsSchema,
   PersonalDetailsSchema,
 } from "../core";
-import { PassphraseSchema } from "../shared/generic";
+import { PassphraseSchema, SanitizedString } from "../shared/generic";
 
 export const ExtendExpirationParamsSchema = z.object({
   amount: z.number(),
@@ -18,7 +18,7 @@ export const ExtendExpirationParamsSchema = z.object({
 export const ExtendExpirationResponseSchema = ExtendExpirationCoreCommandParamsSchema;
 
 export const InitializeAccountParamsSchema = z.object({
-  username: z.string().refine(data => data.toLocaleLowerCase() !== "deleted", {
+  username: SanitizedString.min(3).refine(data => data.toLocaleLowerCase() !== "deleted", {
     message: "Username cannot be 'deleted'",
   }),
   email: EmailSchema,
