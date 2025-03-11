@@ -1,7 +1,13 @@
 import z from "zod";
-import { BigIntSchema, FormDataBooleanSchema, PassphraseSchema } from "../shared/generic";
-import { BufferSchema } from "../core";
 import { zfd } from "zod-form-data";
+
+import {
+  BigIntSchema,
+  FormDataBooleanSchema,
+  PassphraseSchema,
+  SanitizedString,
+} from "../shared/generic";
+import { BufferSchema, CustomFieldSchema, DownloadPermissionLevelSchema } from "../core";
 
 export const DownloadFileParamsSchema = z.object({
   fileId: z.string(),
@@ -32,10 +38,10 @@ export const UploadFileParamsSchema = z.object({
   passphrase: z.string(),
   expiration: z.coerce.number(),
   network: z.string(),
-  title: z.string(),
-  customFields: z.string(),
+  title: SanitizedString.min(3),
+  customFields: CustomFieldSchema.array(),
   recipientEmailHash: z.string(),
-  downloadPermissionLevel: z.string(),
+  downloadPermissionLevel: DownloadPermissionLevelSchema,
   collectionId: z.string(),
   isTimedTransfer: FormDataBooleanSchema,
   isPrivate: FormDataBooleanSchema,
@@ -51,4 +57,6 @@ export const UploadFileParamsSchema = z.object({
 export const UploadFileResponseSchema = z.null();
 
 // Helper schema for parsing the form data in a frontend application
-export const UploadFileFormDataParamsSchema = zfd.formData(UploadFileParamsSchema);
+export const UploadFileFormDataParamsSchema = zfd.formData(
+  UploadFileParamsSchema.merge(z.object({ customFields: z.string() }))
+);
