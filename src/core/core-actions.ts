@@ -11,6 +11,8 @@ export const FiltersSchema = z.object({
   mimeType: z.string().optional(),
   sortType: z.string().optional(),
   isUpdated: z.boolean().optional(),
+  owner: z.string().optional(),
+  accessibleToUserLsk32Address: z.string().optional(),
 });
 
 export const ApiOptionsSchema = z.object({
