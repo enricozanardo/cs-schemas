@@ -114,6 +114,9 @@ import {
   ActionSchema,
   DeleteAccountCoreCommandParamsSchema,
   DeleteAccountCoreCommandParams,
+  GetNetworksActionParamsSchema,
+  GetNetworksActionResponseSchema,
+  GetNetworksActionParams,
 } from "./core";
 
 export const commandRequestSchemas: { [key in Command]: ZodSchema } = {
@@ -198,6 +201,7 @@ export const actionRequestSchemas: { [key in Action]: ZodSchema } = {
   [Action.AccountIsInitialized]: AccountIsInitializedActionParamsSchema,
   [Action.AccountIsTaken]: AccountIsTakenActionParamsSchema,
   [Action.GetAccount]: GetAccountActionParamsSchema,
+  [Action.GetNetworks]: GetNetworksActionParamsSchema,
 };
 
 export type ActionParams =
@@ -220,7 +224,8 @@ export type ActionParams =
   | { action: Action.SetReadAllStatus; params: SetReadAllStatusActionParams }
   | { action: Action.AccountIsInitialized; params: AccountIsInitializedActionParams }
   | { action: Action.AccountIsTaken; params: AccountIsTakenActionParams }
-  | { action: Action.GetAccount; params: GetAccountActionParams };
+  | { action: Action.GetAccount; params: GetAccountActionParams }
+  | { action: Action.GetNetworks; params: GetNetworksActionParams };
 
 export const ActionRequestSchema = z.object({
   action: ActionSchema,
@@ -247,6 +252,7 @@ export const ActionResponseSchemas: { [key in Action]: ZodSchema } = {
   [Action.AccountIsInitialized]: AccountIsInitializedActionResponseSchema,
   [Action.AccountIsTaken]: AccountIsTakenActionResponseSchema,
   [Action.GetAccount]: GetAccountActionResponseSchema,
+  [Action.GetNetworks]: GetNetworksActionResponseSchema,
 };
 
 export type ActionResponse =
