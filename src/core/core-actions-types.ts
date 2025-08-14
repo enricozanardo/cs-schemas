@@ -30,6 +30,8 @@ import {
   GetFilesActionResponseSchema,
   GetFilesByIdsActionParamsSchema,
   GetFilesByIdsActionResponseSchema,
+  GetNetworksActionParamsSchema,
+  GetNetworksActionResponseSchema,
   GetNotificationDataActionParamsSchema,
   GetNotificationDataActionResponseSchema,
   GetStorageStatisticsActionParamsSchema,
@@ -58,6 +60,7 @@ export enum Action {
   AccountIsInitialized = "storage_accountIsInitialized",
   AccountIsTaken = "storage_accountIsTaken",
   GetAccount = "storage_getAccount",
+  GetNetworks = "api_getNetworks",
 }
 
 export type Filters = z.infer<typeof FiltersSchema>;
@@ -156,3 +159,7 @@ export type AccountIsInitializedActionResponse = z.infer<
 export type AccountIsTakenActionResponse = z.infer<typeof AccountIsTakenActionResponseSchema>;
 
 export type GetAccountActionResponse = z.infer<typeof GetAccountActionResponseSchema>;
+
+export type GetNetworksActionResponse = z.infer<typeof GetNetworksActionResponseSchema>;
+
+export type GetNetworksActionParams = z.infer<typeof GetNetworksActionParamsSchema>;

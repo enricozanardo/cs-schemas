@@ -125,3 +125,9 @@ export const AccountIsInitializedActionResponseSchema = z.boolean();
 export const AccountIsTakenActionResponseSchema = z.boolean();
 
 export const GetAccountActionResponseSchema = z.union([AccountPropsSchema, z.null()]);
+
+export const GetNetworksActionParamsSchema = z.null();
+
+export const GetNetworksActionResponseSchema = getSanitizedListResponseSchema(
+  NetworkSchema.array()
+);

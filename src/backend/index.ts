@@ -1,3 +1,5 @@
+export * from "./backend-endpoints";
+export * from "./backend-endpoints-types";
 export * from "./blockchain-endpoints";
 export * from "./blockchain-endpoints-types";
 export * from "./dam-endpoints";
