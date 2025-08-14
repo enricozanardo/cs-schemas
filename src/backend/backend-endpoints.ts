@@ -1,4 +1,5 @@
 import z from "zod";
+
 import { htmlColorInputSchema } from "../shared/generic";
 
 export const GetSystemInfoResponseSchema = z.object({
@@ -42,3 +43,19 @@ export const PostCustomClientResponseSchema = z.null();
 export const GetCustomClientResponseSchema = CustomClientSchema;
 
 export const GetCustomClientsResponseSchema = z.array(CustomClientSchema);
+
+export const UpdateCustomClientRequestSchema = CustomClientSchema;
+
+export const UpdateCustomClientResponseSchema = z.null();
+
+export const DeleteCustomClientRequestSchema = z.object({
+  networkLabel: z.string(),
+});
+
+export const DeleteCustomClientResponseSchema = z.null();
+
+export const PostTestEmailRequestSchema = CustomClientSchema.extend({
+  recipientEmail: z.string().email(),
+});
+
+export const PostTestEmailResponseSchema = z.null();
