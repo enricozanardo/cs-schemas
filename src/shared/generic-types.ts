@@ -1,4 +1,4 @@
-import { z } from "zod";
+import * as z from "zod";
 import { FormDataBooleanSchema, htmlColorInputSchema, PassphraseSchema } from "./generic";
 
 export type Passphrase = z.infer<typeof PassphraseSchema>;

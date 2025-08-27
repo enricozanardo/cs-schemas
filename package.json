@@ -26,8 +26,8 @@
     "lint": "tsc"
   },
   "dependencies": {
-    "zod": "^3.24.1",
-    "zod-form-data": "^2.0.5"
+    "zod": "3.24.1",
+    "zod-form-data": "2.0.5"
   },
   "devDependencies": {
     "@types/node": "^22.13.1",

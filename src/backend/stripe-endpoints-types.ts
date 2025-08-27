@@ -1,4 +1,4 @@
-import { z } from "zod";
+import * as z from "zod";
 import { CreateCheckoutSessionParamsSchema, StripeProductSchema } from "./stripe-endpoints";
 
 export type CreateCheckoutSessionParams = z.infer<typeof CreateCheckoutSessionParamsSchema>;
