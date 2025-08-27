@@ -1,4 +1,4 @@
-import { z } from "zod";
+import * as z from "zod";
 import { FileExpirationSummarySchema } from "../core";
 
 export const NotificationTypeSchema = z.enum(["30-day", "15-day", "1-day", "expired", "removed"]);

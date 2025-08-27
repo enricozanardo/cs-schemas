@@ -1,4 +1,4 @@
-import { z } from "zod";
+import * as z from "zod";
 import { zfd } from "zod-form-data";
 
 import {

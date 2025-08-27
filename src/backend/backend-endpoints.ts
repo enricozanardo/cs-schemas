@@ -1,4 +1,4 @@
-import { z } from "zod";
+import * as z from "zod";
 
 import { htmlColorInputSchema } from "../shared/generic";
 
