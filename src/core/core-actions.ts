@@ -1,4 +1,4 @@
-import z from "zod";
+import { z } from "zod";
 import { NotificationItemSchema, NotificationTypeSchema } from "../notification-plugin";
 import { CollectionSchema, DamFileSchema, NetworkSchema } from "./core-generic";
 import { AccountPropsSchema, MapStoreDataSchema, StatisticStoreDataSchema } from "./core-stores";
