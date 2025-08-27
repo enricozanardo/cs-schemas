@@ -1,4 +1,4 @@
-import z from "zod";
+import { z } from "zod";
 import { EmailSchema } from "../core";
 
 export const CreateCheckoutSessionParamsSchema = z.object({
